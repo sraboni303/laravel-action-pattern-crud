@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Student;
 use App\Actions\Student\CreateStudent;
 use App\Actions\Student\DeleteStudent;
+use App\Actions\Student\UpdateStudent;
 use App\Http\Requests\StudentFormRequest;
 
 class StudentController extends Controller
@@ -28,6 +29,25 @@ class StudentController extends Controller
 
         if($created){
             session()->flash('message', 'Student Added Successfuly...');
+        }else{
+            session()->flash('message', 'Something went wrong...');
+        }
+        return back();
+    }
+
+
+    public function edit(Student $student)
+    {
+        return view('student.edit', compact('student'));
+    }
+
+
+    public function update(StudentFormRequest $request, Student $student)
+    {
+        $updated = UpdateStudent::update($request, $student);
+
+        if($updated){
+            session()->flash('message', 'Student Updated Successfuly...');
         }else{
             session()->flash('message', 'Something went wrong...');
         }

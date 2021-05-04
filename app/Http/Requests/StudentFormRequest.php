@@ -23,11 +23,9 @@ class StudentFormRequest extends FormRequest
      */
     public function rules()
     {
-        if($this->method() === 'POST'){
-            return [
-                'name' => "required",
-                'email' => "required|unique:students,email",
-            ];
-        }
+        return [
+            'name' => "required",
+            'email' => "required|unique:students,email",
+        ];
     }
 }
