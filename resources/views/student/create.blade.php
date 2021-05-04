@@ -13,6 +13,7 @@
   <body>
 
     <div class="container my-5">
+        <a href="{{ route('student.index') }}" class="btn btn-info mb-5">Back</a>
         <h3 class="mb-5">Add New Student</h3>
         @if (session()->has('message'))
             <p class="alert alert-success">{{ session()->get('message') }}</p>
