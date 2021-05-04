@@ -9,4 +9,10 @@ class Student extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    public function setNameAttribute($value)
+    {
+        $this->attributes['name'] = $value;
+        $this->attributes['email'] = $value;
+    }
 }

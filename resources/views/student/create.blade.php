@@ -15,7 +15,7 @@
     <div class="container my-5">
         <h3 class="mb-5">Add New Student</h3>
         @if (session()->has('message'))
-            <p class="alert alert-success">{{ session()->get('message') }} <button class="close" data-dismiss="alert">&times;</button></p>
+            <p class="alert alert-success">{{ session()->get('message') }}</p>
         @endif
         <form action="{{ route('student.store') }}" method="POST">
             @csrf

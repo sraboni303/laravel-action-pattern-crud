@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\Student\CreateStudent;
 use App\Http\Requests\StudentFormRequest;
-use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
@@ -14,6 +14,13 @@ class StudentController extends Controller
 
     public function store(StudentFormRequest $request)
     {
-        return $request;
+        $created = CreateStudent::create($request);
+
+        if($created){
+            session()->flash('message', 'Student Added Successfuly...');
+        }else{
+            session()->flash('message', 'Something went wrong...');
+        }
+        return back();
     }
 }
